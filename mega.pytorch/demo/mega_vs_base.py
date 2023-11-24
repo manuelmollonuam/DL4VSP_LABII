@@ -10,6 +10,8 @@ from mega_core.config import cfg
 from predictor import VIDDemo
 
 #python demo/mega_vs_base.py --suffix ".JPEG" --visualize-path image_folder --output-folder visualization [--output-video]
+#python demo/mega_vs_base.py --video --visualize-path videos_folder/panama_canal.mp4 --output-folder visualization [--output-video]
+
 
 parser = argparse.ArgumentParser(description="PyTorch Object Detection Visualization")
 
@@ -81,30 +83,41 @@ if not args.video:
 
     # Calculate the elapsed time
     elapsed_mega_time = end_mega_time - start_mega_time
-
-    print(f"Elapsed BASE time: {elapsed_base_time:.6f} seconds")
-    print(f"Elapsed MEGA time: {elapsed_mega_time:.6f} seconds")
-
-    # Calculate absolute difference
-    absolute_difference = abs(elapsed_base_time - elapsed_mega_time)
-
-    # Calculate percentage difference
-    if elapsed_base_time != 0:
-        percentage_difference = (absolute_difference / elapsed_base_time) * 100
-    else:
-        percentage_difference = float('inf')  # Handles the case where elapsed_base_time is zero
-
-    # Determine which was the fastest
-    fastest = "BASE" if elapsed_base_time < elapsed_mega_time else "MEGA"
-
-    # Print the results
-    print(f"Absolute difference: {absolute_difference:.6f} seconds")
-    print(f"Percentage difference: {percentage_difference:.2f}%")
-    print(f"{fastest} was the fastest")
-
 else:
-    base_results = vid_demo.run_on_video(args.visualize_path)
-    mega_results = vid_demo.run_on_video(args.visualize_path)
+    start_base_time = time.time()
+    base_results = vid_base.run_on_video(args.visualize_path)
+    end_base_time = time.time()
+
+    # Calculate the elapsed time
+    elapsed_base_time = end_base_time - start_base_time
+
+    start_mega_time = time.time()
+    mega_results = vid_mega.run_on_video(args.visualize_path)
+    end_mega_time = time.time()
+
+    # Calculate the elapsed time
+    elapsed_mega_time = end_mega_time - start_mega_time
+
+
+print(f"Elapsed BASE time: {elapsed_base_time:.6f} seconds")
+print(f"Elapsed MEGA time: {elapsed_mega_time:.6f} seconds")
+
+# Calculate absolute difference
+absolute_difference = abs(elapsed_base_time - elapsed_mega_time)
+
+# Calculate percentage difference
+if elapsed_base_time != 0:
+    percentage_difference = (absolute_difference / elapsed_base_time) * 100
+else:
+    percentage_difference = float('inf')  # Handles the case where elapsed_base_time is zero
+
+# Determine which was the fastest
+fastest = "BASE" if elapsed_base_time < elapsed_mega_time else "MEGA"
+
+# Print the results
+print(f"Absolute difference: {absolute_difference:.6f} seconds")
+print(f"Percentage difference: {percentage_difference:.2f}%")
+print(f"{fastest} was the fastest")
 
 
 vid_base.generate_images(base_results)
