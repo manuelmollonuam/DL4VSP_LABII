@@ -39,7 +39,11 @@ python setup.py build_ext install
 
 # install PyTorch Detection
 cd $INSTALL_DIR
-git clone https://github.com/Scalsol/mega.pytorch.git
+git clone https://github.com/manuelmollonuam/DL4VSP_LABII/
+cd DL4VSP_LABII
+mv mega.pytorch $INSTALL_DIR
+cd $INSTALL_DIR
+rm -r DL4VSP_LABII
 cd mega.pytorch
 
 # the following will install the lib with

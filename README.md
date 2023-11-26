@@ -10,10 +10,10 @@ To install the code, download and execute the [INSTALL.sh](INSTALL.sh) script in
 - CUDA 10.1
 
 To run the bash file, execute the following commands:
-1. `chmod +x /path/to/your/script/install.sh`
-2. `/path/to/your/script/install.sh`
+1. `chmod +x /path/to/your/script/INSTALL.sh`
+2. `/path/to/your/script/INSTALL.sh`
 
-Additionally, apart from the code, you'll need the checkpoints for both the MEGA and BASE models, which you can download from [here for MEGA](https://drive.google.com/file/d/1ZnAdFafF1vW9Lnpw-RPF1AD_csw61lBY/view) and [here for BASE](https://drive.google.com/file/d/1W17f9GC60rHU47lUeOEfU--Ra-LTw3Tq/view). Save these checkpoint files inside the `mega.pytorch` folder after running `install.sh`.
+Additionally, apart from the code, you'll need the checkpoints for both the MEGA and BASE models, which you can download from [here for MEGA](https://drive.google.com/file/d/1ZnAdFafF1vW9Lnpw-RPF1AD_csw61lBY/view) and [here for BASE](https://drive.google.com/file/d/1W17f9GC60rHU47lUeOEfU--Ra-LTw3Tq/view). Save these checkpoint files inside the `mega.pytorch` folder after running `INSTALL.sh`.
 
 
 ## Data Preparation
@@ -36,7 +36,7 @@ python demo/mega_vs_base.py \
 ```
 python demo/mega_vs_base.py \
     --video \
-    --visualize-path input_folder/panama_canal.mp4 \
+    --visualize-path path/to/video/input_video.mp4 \
     --output-folder output_folder \
     [--output-video]
 ```
@@ -45,9 +45,10 @@ Please note the following:
 1. The `output-video` parameter is optional. If specified, it denotes the output as an mp4 file; otherwise, it generates a sequence of images.
 2. Terminal output includes the duration of each method and a brief time comparison analysis.
 3. For video input, specify the `video` parameter along with the file path, not just the folder path.
-4. Prior to running these commands, activate the conda environment MEGA using:
+4. Prior to running these commands, activate the conda environment MEGA and access the mega.pytorch folder:
 ```
 source activate MEGA
+cd mega.pytorch
 ```
 5. These commands are configured to run the code from the terminal within the `mega.pytorch` folder as root.
 6. The output video is consistently named `comparison.mp4`. Rename it if you intend to preserve previous comparison outputs. Similarly, use a new `output_folder` to store comparisons separately for new inputs.
