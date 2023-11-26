@@ -19,6 +19,7 @@ Additionally, apart from the code, you'll need the checkpoints for both the MEGA
 ## Data Preparation
 
 To execute the comparison implementation, simply store your files for comparison in a folder of your choice (e.g., `input_folder`) inside the `mega.pytorch` directory. Additionally, create an output folder (`output_folder`) within `mega.pytorch` where you'd like the results to be stored. The input data can be either a video or an image. For videos, files in ".avi" or ".mp4" formats have been tested, while for images, only ".JPEG" format has been specifically tested; however, other formats should work as well.
+We have included in the repo the data we have used to test and compare the two methods. The images of thedog and cats sequence can be found in the image_folder directory and the videso used in the videos_folder one.
 
 ### Inference Comparison between MEGA and BASE
 
