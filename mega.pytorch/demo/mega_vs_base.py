@@ -184,7 +184,7 @@ if args.output_video:
 
     # Define the codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Specify the codec
-    video = cv2.VideoWriter(output_video, fourcc, 1, (width, height))  # 1 frame per second
+    video = cv2.VideoWriter(output_video, fourcc, 20, (width, height))  # 20 frames per second
 
     # Write each image to the video
     for image in images:

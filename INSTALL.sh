@@ -15,11 +15,7 @@ pip install ninja yacs cython matplotlib tqdm opencv-python scipy
 
 # follow PyTorch installation in https://pytorch.org/get-started/locally/
 # we give the instructions for CUDA 10.0
-#conda install pytorch=1.2.0 torchvision=0.4.0 cudatoolkit=10.0 -c pytorch
 conda install pytorch=1.2.0 torchvision=0.4.0 cudatoolkit=10.0 -c pytorch
-
-#conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
-#conda install torch==1.7.1 torchvision=0.4.0 cudatoolkit=10.0 -c pytorch
 
 export INSTALL_DIR=$PWD
 
@@ -55,5 +51,3 @@ python setup.py build develop
 pip install 'pillow<7.0.0'
 
 unset INSTALL_DIR
-
-#python demo/demo.py base configs/vid_R_101_C4_1x.yaml R_101.pth --suffix ".JPEG" --visualize-path image-folder/ --output-folder visualization 
